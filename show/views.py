@@ -60,7 +60,7 @@ def add_comment(request, post_id):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-    return redirect('detail', post_id=post.pk)
+    return redirect('show:detail', post_id=post.pk)
 
 def comment_edit(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -69,7 +69,7 @@ def comment_edit(request, comment_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.save()
-            return redirect('detail', post_id = comment.post.id)
+            return redirect('show:detail', post_id = comment.post.id)
     else:
         form = CommentForm(instance = comment)
 
@@ -79,7 +79,7 @@ def comment_delete(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
     post = comment.post
     comment.delete()
-    return redirect('detail', post_id=post.id)
+    return redirect('show:detail', post_id=post.id)
 
 def post_like(request, comment_id ) :
     # 코멘트 정보 받아옴
@@ -88,7 +88,7 @@ def post_like(request, comment_id ) :
     print(post.comments.all)
     
     if not request.user.is_active:
-        return redirect('detail', post_id=post.id)    
+        return redirect('show:detail', post_id=post.id)    
 
     #사용자 정보 받아옴
     user = User.objects.get(username=request.user)
@@ -110,7 +110,7 @@ def post_like(request, comment_id ) :
     #     # 아니면 사용자를 추가
     #     comment.likes.add(user)
     #포스트로 리디렉션
-    return redirect('detail', post_id=post.id)
+    return redirect('show:detail', post_id=post.id)
      #우리는 코멘트를 가져와서 거기다가 좋아요 기능을 만들건데
     # 코멘트마다 뭐를 하나씩 클릭하면
     # 코멘트 밑에 있는 숫자가 올라가겠끔만 하면 됨!!!
@@ -123,7 +123,7 @@ def post_dislike(request, comment_id):
         print(post.comments.all)
         
         if not request.user.is_active:
-            return redirect('detail', post_id=post.id)    
+            return redirect('shwo:detail', post_id=post.id)    
     
         #사용자 정보 받아옴
         user = User.objects.get(username=request.user)
@@ -147,7 +147,7 @@ def post_dislike(request, comment_id):
         #     # 아니면 사용자를 추가
         #     comment.likes.add(user)
         #포스트로 리디렉션
-        return redirect('detail', post_id=post.id)
+        return redirect('show:detail', post_id=post.id)
             #우리는 코멘트를 가져와서 거기다가 좋아요 기능을 만들건데
         # 코멘트마다 뭐를 하나씩 클릭하면
         # 코멘트 밑에 있는 숫자가 올라가겠끔만 하면 됨!!!

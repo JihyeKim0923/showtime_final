@@ -36,10 +36,10 @@
         <div style="background-color: #78C2AD" id="sidebar-wrapper">
             <div class="sidebar-heading"><strong>ShowTime</strong></div>
             <div class="list-group list-group-flush" >
-                <a href="{% url 'exhibition' %}" class="list-group-item list-group-item-action"style="background-color: #78C2AD">Exhibition</a>
-                <a href="{% url 'classic' %}" class="list-group-item list-group-item-action" style="background-color: #78C2AD">Classic</a>
-                <a href="{% url 'musical' %}" class="list-group-item list-group-item-action" style="background-color: #78C2AD">Musical/Theater</a>
-                <a href="{% url 'concert' %}" class="list-group-item list-group-item-action" style="background-color: #78C2AD">Concert</a>
+                <a href="{% url 'show:exhibition' %}" class="list-group-item list-group-item-action"style="background-color: #78C2AD">Exhibition</a>
+                <a href="{% url 'show:classic' %}" class="list-group-item list-group-item-action" style="background-color: #78C2AD">Classic</a>
+                <a href="{% url 'show:musical' %}" class="list-group-item list-group-item-action" style="background-color: #78C2AD">Musical/Theater</a>
+                <a href="{% url 'show:concert' %}" class="list-group-item list-group-item-action" style="background-color: #78C2AD">Concert</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -58,12 +58,12 @@
                             {% if user.is_active %}
                             
                             <div style="margin-right: 30px;">
-                                <a href="{% url 'home' %}"><button type="button" class="myButton">홈으로</button></a>
+                                <a href="{% url 'show:home' %}"><button type="button" class="myButton">홈으로</button></a>
                                 <a href="{% url 'logout' %}"><button type="button" class="myButton">로그아웃</button></a>
                             </div>
                             {% else %}
                             <div style="margin-right: 30px;">
-                                <a href="{% url 'home' %}"><button type="button" class="myButton">홈으로</button></a>
+                                <a href="{% url 'show:home' %}"><button type="button" class="myButton">홈으로</button></a>
                                 <a href="{% url 'accounts:signup' %}"><button type="button" class="myButton" >회원가입</button></a>
                                 <a href="{% url 'login' %}"><button type="button" class="myButton">로그인</button></a>
                             </div>
