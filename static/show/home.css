@@ -1,0 +1,80 @@
+body {
+    overflow-x: hidden;
+    /* padding-top: 56px; */
+    width: 100%;
+    background-color:#F8F9FA;
+    font-family: 'Black Han Sans', sans-serif;
+
+  }
+
+
+.detail {
+  font-size: 20px;
+}
+
+
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+    position: fixed;
+    top: 0;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+
+  .myButton {
+    background-color:#ffffff;
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:1px solid #f3969a;
+    display:inline-block;
+    cursor:pointer;
+    color:#f3969a;
+    font-family:Trebuchet MS;
+    font-size:17px;
+    font-weight:bold;
+    padding:8px 15px;
+    text-decoration:none;
+ }
+ .myButton:hover {
+    background-color:#ffdee0;
+ }
+ .myButton:active {
+    position:relative;
+    top:1px;
+ }
