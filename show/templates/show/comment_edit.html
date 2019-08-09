@@ -1,0 +1,20 @@
+{% extends "show/base.html" %}
+
+{% block content %}
+
+<div class="fluid-center" style="padding: 15px; margin: 5px 120px;">
+        <div class="row">
+<div class="form-group">
+    <h4>댓글 수정</h4>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" class="myButton">수정하기</button>
+    </form> 
+</div>
+</div>
+</div>
+
+
+{% endblock %}

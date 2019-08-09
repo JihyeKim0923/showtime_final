@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="fluid-center" style="padding: 15px; margin: 25px;">
+        <div class="fluid-center" style="padding: 15px; margin: 25px; margin-left: 100px; margin-right: 100px;">
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,7 +37,7 @@
         <div class="row">
 
                     {% for post in posts.all %}
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100">
                             {% if post.image %}
                             <a href="{% url 'detail' post.id %}"><img class="card-img-top" src="{{ post.image.url }}" alt="" height=300></a>
@@ -56,12 +56,32 @@
                             </div>
                         </div>
                     </div>
+                    
                     {% endfor %}
+                    <div class="row">
+                        <div style="margin-left: 270px; align: right; text-align: center; position: fixed; bottom: 0;" >
+                            {% if postss.has_previous %}
+                            <a href="?page=1">처음</a>
+                            <a href="?page={{postss.previous_page_number}}">이전</a>
+                            {% endif %}
+
+                            <span>{{postss.number}}</span>
+                            <span>-</span>
+                            <span>{{postss.paginator.num_pages}}</span>
+
+                            {% if postss.has_next %}
+                            <a href="?page={{postss.next_page_number}}">다음</a>
+                            <a href="?page={{postss.paginator.num_pages}}">마지막</a>
+                            {% endif %} 
+                        </div>
+                    </div>
                 </div>
             </div>
-
+        
+        
         </div>
+      
         <!-- /.row -->
         </div>
-    <div>
+ 
 {% endblock %}

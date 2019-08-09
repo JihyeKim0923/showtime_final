@@ -37,12 +37,12 @@
                 <div>
                     
                     <p ><strong> nickname: {{comment.nickname}}</strong></p>
-                    <p > 후기: {{comment.text|linebreaks}}</p>
+                    <p >{{comment.text|linebreaks}}</p>
                     <p style="font-size: 15px;">{{comment.created_date}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'post_like' comment.id %}">좋아요!</a>&nbsp;{{ comment.likes.count }}
                     
 
                     <a href="{% url 'post_dislike' comment.id %}">싫어요!</a>&nbsp;{{ comment.dislikes.count }} </P>
-                
+                    <a href = "{% url 'comment_edit' comment.id %}" class="myButton">댓글 수정</a>
                     <a href = "{% url 'comment_delete' comment.id %}" class="myButton" onclick="return confirm('정말로 삭제하시겠습니까?')">댓글 삭제</a>
                     <br>
                     <hr>

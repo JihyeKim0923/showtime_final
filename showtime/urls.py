@@ -28,6 +28,7 @@ urlpatterns = [
     path('showtime/concert/', show.views.concert, name='concert'),
     path('showtime/classic/', show.views.classic, name='classic'),
     path('post/<int:post_id>/comment/', show.views.add_comment, name='add_comment'),
+    path('comment/<int:comment_id>/edit/', show.views.comment_edit, name= 'comment_edit'),
     path('comment/<int:comment_id>/delete', show.views.comment_delete, name='comment_delete'),
     path('comment/<int:comment_id>/like/', show.views.post_like, name='post_like'),
     path('comment/<int:comment_id>/dislike/', show.views.post_dislike, name='post_dislike'),

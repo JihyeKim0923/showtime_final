@@ -3,10 +3,15 @@ from .models import Musical,Exhibition,Concert,Classic, Category, Post, Comment
 from .forms import CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 def home(request):
     posts = Post.objects
-    return render(request, 'show/home.html', {'posts' : posts})
+    home_list=Post.objects.all()
+    paginator=Paginator(home_list,12)
+    page=request.GET.get('page')
+    postss=paginator.get_page(page)
+    return render(request, 'show/home.html', {'posts' : posts, 'postss':postss})
 
 def detail(request, post_id):
     post_detail=get_object_or_404(Post, pk = post_id)
@@ -56,6 +61,19 @@ def add_comment(request, post_id):
             comment.post = post
             comment.save()
     return redirect('detail', post_id=post.pk)
+
+def comment_edit(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.save()
+            return redirect('detail', post_id = comment.post.id)
+    else:
+        form = CommentForm(instance = comment)
+
+    return render(request, 'show/comment_edit.html', {'form' : form})
 
 def comment_delete(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
